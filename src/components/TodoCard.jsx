@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { FaClipboardCheck } from "react-icons/fa6";
+import { RiAddLargeFill } from "react-icons/ri";
+import { MdDeleteForever } from "react-icons/md";
 
 const TodoCard = () => {
   const [todos, setTodos] = useState([]);
@@ -13,7 +15,7 @@ const TodoCard = () => {
   };
 
   return (
-    <div className="bg-white shadow-lg rounded-3xl p-16 hover:shadow-[0_5px_100px_var(--color-blue-300)] ">
+    <div className="bg-white shadow-lg rounded-3xl p-16 hover:shadow-[0_5px_100px_var(--color-gray-400)] ">
       <h1 className="flex items-center justify-center gap-3 text-3xl font-bold text-gray-900 mb-6">
         ToDO List <FaClipboardCheck />
       </h1>
@@ -28,10 +30,10 @@ const TodoCard = () => {
           onChange={(e) => setInput(e.target.value)}
         />
         <button
-          className="bg-blue-500 px-4 py-2 rounded-r-lg hover:bg-blue-600"
+          className="bg-blue-400 px-4 py-2 rounded-r-lg hover:bg-blue-600 text-center"
           onClick={addTodos}
         >
-          Add
+          <RiAddLargeFill />
         </button>
       </div>
 
@@ -39,7 +41,7 @@ const TodoCard = () => {
         {todos.map((todo) => (
           <li
             key={todo.id}
-            className="flex gap-2 items-center p-3 rounded-lg bg-slate-200 border border-gray-200"
+            className="flex gap-2 items-center p-3 rounded-lg bg-slate-200 border border-gray-200 hover:shadow-[0_5px_5px_var(--color-gray-100)]"
           >
             <input
               type="checkbox"
@@ -64,7 +66,7 @@ const TodoCard = () => {
               className="p-1.5 bg-red-400 rounded-lg hover:bg-red-600"
               onClick={() => setTodos(todos.filter((t) => t.id !== todo.id))}
             >
-              Delete
+              <MdDeleteForever />
             </button>
           </li>
         ))}
